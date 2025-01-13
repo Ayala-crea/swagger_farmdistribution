@@ -1,0 +1,1219 @@
+openapi: 3.0.0
+info:
+  title: farm monitoring app
+  version: 1.0.0
+servers:
+  - url: https://farmsdistribution-2664aad5e284.herokuapp.com
+tags:
+  - name: Auth
+  - name: role
+  - name: role > menu role
+  - name: role > Role Access
+  - name: role > role access
+  - name: address
+  - name: profile
+  - name: peternakan
+  - name: product
+  - name: order
+  - name: radius
+  - name: user
+paths:
+  /regis:
+    post:
+      tags:
+        - Auth
+      summary: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama: percobaan
+                no_telp: '08738291345'
+                email: percobaan@gmail.com
+                alamat: 123 Main Street
+                password: password123
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /login:
+    post:
+      tags:
+        - Auth
+      summary: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: peternaktesting@gmail.com
+                password: testingreset
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reset-password:
+    post:
+      tags:
+        - Auth
+      summary: reset password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: peternaktesting@gmail.com
+                no_telp: '082184952676'
+                new_password: testingreset
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /create/role-menu:
+    post:
+      tags:
+        - role > menu role
+      summary: create menu role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama_menu: Product
+                routes_page: /product
+                icon: product-icon
+                sequence: 1
+                status: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /role-menu:
+    get:
+      tags:
+        - role > menu role
+      summary: get menu role by id
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /update/role-menu/:
+    put:
+      tags:
+        - role > menu role
+      summary: update menu role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                menu_id: 101
+                parent_id: null
+                nama_menu: Updated Menu
+                routes_page: /updated-route
+                icon: updated-icon
+                sequence: 1
+                status: true
+                parent_sequence: null
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /delete/role-menu:
+    delete:
+      tags:
+        - role > menu role
+      summary: delete menu role
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /create/role:
+    post:
+      tags:
+        - role > Role Access
+      summary: cretae role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name_role: Admin
+                deskripsi: All Access
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /role:
+    get:
+      tags:
+        - role > Role Access
+      summary: get all
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /role-id:
+    get:
+      tags:
+        - role > Role Access
+      summary: get role by id
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /update/role:
+    put:
+      tags:
+        - role > Role Access
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name_role: Admin
+                deskripsi: All access fitur edit
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /delete/role:
+    delete:
+      tags:
+        - role > Role Access
+      summary: delete role
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /create/role/menu:
+    post:
+      tags:
+        - role > role access
+      summary: create role access
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /add/address:
+    post:
+      tags:
+        - address
+      summary: create address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                street: Jl. Merdeka No. 45
+                city: Bandung
+                state: Jawa Barat
+                postal_code: '40115'
+                country: Indonesia
+                lat: -6.914744
+                lon: 107.60981
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlRldGluZyBkYXRhIiwiZXhwIjoiMjAyNC0xMS0xOFQyMDoxMDoyNCswNzowMCIsImlhdCI6IjIwMjQtMTEtMThUMDI6MTA6MjQrMDc6MDAiLCJpZCI6IjA4MTIzNDg3MjM2NCIsIm5iZiI6IjIwMjQtMTEtMThUMDI6MTA6MjQrMDc6MDAifZBxbp_GOVFy2HHrqwwd5I0tKMCbC98t6oaW1ivCmS1-xGL6J7Vgld_EGT8E4egeOhwDlyfwJgHTTpXASHERQQ8
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /address:
+    get:
+      tags:
+        - address
+      summary: get address by token
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /address/update:
+    put:
+      tags:
+        - address
+      summary: update address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                street: Jl. Merdeka No. 45
+                city: solo
+                state: Jawa Tengah
+                postal_code: '40115'
+                country: Indonesia
+                lat: -6.914744
+                lon: 107.60981
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile:
+    get:
+      tags:
+        - profile
+      summary: get profile
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/by-id:
+    get:
+      tags:
+        - profile
+      summary: Get profile by id
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/update:
+    put:
+      tags:
+        - profile
+      summary: update profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama: Peternak Testings
+                no_telp: '082184952676'
+                email: peternaktesting@gmail.com
+                id_role: 11
+                street: Jl. Perkebunan Sukawana
+                city: Bandung Barat
+                state: Jawa Barat
+                postal_code: '40559'
+                country: Indonesia
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/all:
+    get:
+      tags:
+        - profile
+      summary: get all profile
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/delete:
+    delete:
+      tags:
+        - profile
+      summary: delete profile
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/add-image:
+    put:
+      tags:
+        - profile
+      summary: add image profile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /profile/delete-image:
+    delete:
+      tags:
+        - profile
+      summary: delete image profile
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /peternakan:
+    post:
+      tags:
+        - peternakan
+      summary: daftar peternakan
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Peternakan Sukawangi
+                street:
+                  type: string
+                  example: Jl. Perkebunan Sukawana
+                city:
+                  type: string
+                  example: Bandung Barat
+                state:
+                  type: string
+                  example: Jawa Barat
+                postal_code:
+                  type: integer
+                  example: '40559'
+                country:
+                  type: string
+                  example: Indonesia
+                image_farm:
+                  type: string
+                  format: binary
+                lat:
+                  type: number
+                  example: '-6.783763727800748'
+                lon:
+                  type: number
+                  example: '107.58645791756318'
+                farm_type:
+                  type: string
+                  example: ayam
+                phonenumber_farm:
+                  type: integer
+                  example: '082184952582'
+                email:
+                  type: string
+                  example: PeternakanSejahtera@gmail.com
+                description:
+                  type: string
+                  example: >-
+                    ini peternakan yang memiliki produk yang sangat baik dalam
+                    segi kualitas daging dan ayam
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA0VDA5OjI5OjMzKzA3OjAwIiwiaWF0IjoiMjAyNC0xMi0wM1QxNToyOTozMyswNzowMCIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wM1QxNToyOTozMyswNzowMCJ9cz4rxkgjxi_csJ11fW7zNRfXand3WMveEQkAQ8FbQx6_GtVqPsix1-EJi43_36mR8Cj4mrdGt-ozbuuGvRkMBA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /peternakan/update:
+    put:
+      tags:
+        - peternakan
+      summary: update profile peternakan
+      description: "Generated from cURL: curl --location --request PUT 'http://localhost:8080/peternakan/update' \\\r\n--header 'login: v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQyMDoxNDo0NFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAyOjE0OjQ0WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMjoxNDo0NFoifXt42qZ4yCBu7pL08bpDNt86rXLGh3nb8T6lNlFg33WAPsLzYafe01Q4_3XYMqOKky9MO44Wy9SxZsu_WyppUwA' \\\r\n--form 'name=\"Green Valley Farm\"' \\\r\n--form 'farm_type=\"Organic\"' \\\r\n--form 'phonenumber_farm=\"081234567890\"' \\\r\n--form 'email=\"contact@greenvalley.com\"' \\\r\n--form 'description=\"A beautiful organic farm located in the hills.\"' \\\r\n--form 'street=\"123 Green Valley Road\"' \\\r\n--form 'city=\"Hilltown\"' \\\r\n--form 'state=\"West Province\"' \\\r\n--form 'postal_code=\"12345\"' \\\r\n--form 'country=\"Indonesia\"' \\\r\n--form 'lat=\"-7.789\"' \\\r\n--form 'lon=\"110.123\"' \\\r\n--form 'image_farm=@/path/to/your/image.jpg'\r\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Green Valley Farm
+                farm_type: Organic
+                phonenumber_farm: '081234567890'
+                email: contact@greenvalley.com
+                description: A beautiful organic farm located in the hills.
+                street: 123 Green Valley Road
+                city: Hilltown
+                state: West Province
+                postal_code: '12345'
+                country: Indonesia
+                lat: -7.789
+                lon: 110.123
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQyMDoxNDo0NFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAyOjE0OjQ0WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMjoxNDo0NFoifXt42qZ4yCBu7pL08bpDNt86rXLGh3nb8T6lNlFg33WAPsLzYafe01Q4_3XYMqOKky9MO44Wy9SxZsu_WyppUwA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /peternakan/get:
+    get:
+      tags:
+        - peternakan
+      summary: get profile peternakan pribadi
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQxOTo0OToyOFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAxOjQ5OjI4WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMTo0OToyOFoifdNEHLPEI-dKHYTQVQ9YSiqC4jdEsieuABNQoZrDiJjoz_K7oDZAWe6zJb5L1Cb6y_L7QqABS5Do0rOja_kbqws
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all/peternak:
+    get:
+      tags:
+        - peternakan
+      summary: get all peternak
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/delete:
+    delete:
+      tags:
+        - product
+      summary: delete product
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0xMFQwMToyOTowN1oiLCJpYXQiOiIyMDI0LTEyLTA5VDA3OjI5OjA3WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwNzoyOTowN1oifW9AOHcWlQLdj7yiPHSxSpVEmBusZFBvmGqrgmDcYl773kMRu4iIcL78ijEz-M5N-WPtraoTpEMEgKGsok66swM
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /req/peternak:
+    post:
+      tags:
+        - peternakan
+      summary: req peternakan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                keterangan: testing
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6InBlcmNvYmFhbiIsImV4cCI6IjIwMjUtMDEtMTRUMDM6MzE6NTUrMDc6MDAiLCJpYXQiOiIyMDI1LTAxLTEzVDA5OjMxOjU1KzA3OjAwIiwiaWQiOiIwODczODI5MTM0NSIsIm5iZiI6IjIwMjUtMDEtMTNUMDk6MzE6NTUrMDc6MDAifeldjA3fR-zKi7ukbU3COwZceSJVnosEw7eVImnfIEGhnB7QmllsoJlGjafAOHbGWTcwvyL4wYPYrFzwWM_PiAU
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /get/req/peternak:
+    get:
+      tags:
+        - peternakan
+      summary: get all request peternak
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjUtMDEtMTRUMDM6MzM6MjYrMDc6MDAiLCJpYXQiOiIyMDI1LTAxLTEzVDA5OjMzOjI2KzA3OjAwIiwiaWQiOiIwODIxODQ5NTI1ODIiLCJuYmYiOiIyMDI1LTAxLTEzVDA5OjMzOjI2KzA3OjAwIn3SW9I2SN3NdnRYJjbdUkRONC7Kv7Fed0JVfOOANpvbCPNWidYg7FoNAuJMDOTpYyLxXPLRGf2X34BBh8IEmg8I
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /delete/req/peternak:
+    delete:
+      tags:
+        - peternakan
+      summary: delete req peternakan
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xM1QwMjoyOToyNyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAifV6oyNRc-EYVBZ4f-CYGmpWanJxHNa1vqAsgmevTKJ52ueeHYCd_G2L6NZ8U9pfcn_ay-QZPodrel4J-D_qc1Ac
+        - name: _id
+          in: query
+          schema:
+            type: string
+          example: 6782d05d97002d3fda151f7a
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /update/req/peternak:
+    put:
+      tags:
+        - peternakan
+      summary: update data role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: 112
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xNFQwMzoxMzo0NyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAifR-fse4qBlNG7FpGBZGiiZZybw8JAitRQuSBI0RyeyYbN-XUkJsRL53JybnD9ScNdXshCvVFQ6xupmkwhGDJUAM
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /add/product:
+    post:
+      tags:
+        - product
+      summary: create product
+      description: "Generated from cURL: curl -X POST http://localhost:8080/api/products \\\r\n-H \"Authorization: Bearer <your_jwt_token>\" \\\r\n-H \"Content-Type: multipart/form-data\" \\\r\n-F \"product_name=Ayam Broiler\" \\\r\n-F \"description=Ayam potong segar siap jual\" \\\r\n-F \"price_per_kg=25.5\" \\\r\n-F \"weight_per_kg=1.25\" \\\r\n-F \"stock_kg=100.0\" \\\r\n-F \"status_name=Tersedia\" \\\r\n-F \"available_date=2024-12-03T10:00:00Z\" \\\r\n-F \"image=@/path/to/image.jpg\"\r\n"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                product_name:
+                  type: string
+                  example: djahbdjasd
+                description:
+                  type: string
+                  example: askjdbadkja
+                price_per_kg:
+                  type: number
+                  example: '25.5'
+                weight_per_kg:
+                  type: number
+                  example: '1.25'
+                stock_kg:
+                  type: number
+                  example: '100.0'
+                status_name:
+                  type: string
+                  example: Tersedia
+                available_date:
+                  type: string
+                  example: 03/December/24
+                image:
+                  type: string
+                  format: binary
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product:
+    get:
+      tags:
+        - product
+      summary: get all product
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wNFQxOTo1MToxN1oiLCJpYXQiOiIyMDI0LTEyLTA0VDAxOjUxOjE3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wNFQwMTo1MToxN1oifZDhDrSVcp7NqLfUL0Ssl77cwBhyZVUadvhmaH2BqQZITw2gBbI8LLs5PUc7c0Bqbx4IUryLj7tlRN1kU9RTeAI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/mine:
+    get:
+      tags:
+        - product
+      summary: get all product pribadi
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQxMjo0NDozMVoiLCJpYXQiOiIyMDI0LTEyLTA4VDE4OjQ0OjMxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOFQxODo0NDozMVoifcMypvoCqDKtCN7XOPeAai_X0PxVvszkUlTeuyhSpZkoDP4jppedvkapm1_T9Th4MBhGLc9A5H-Xk_xwx4iQbAU
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/get/:
+    get:
+      tags:
+        - product
+      summary: get product by id
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/edit:
+    put:
+      tags:
+        - product
+      summary: edit produk new
+      description: "Generated from cURL: curl -X PUT http://localhost:8080/edit-product?id=123 \\\r\n-H \"Authorization: Bearer <YOUR_JWT_TOKEN>\" \\\r\n-H \"Content-Type: multipart/form-data\" \\\r\n-F \"image=@/path/to/your/image.jpg\" \\\r\n-F \"product_name=Updated Product Name\" \\\r\n-F \"description=This is an updated description of the product.\" \\\r\n-F \"price_per_kg=120.5\" \\\r\n-F \"weight_per_kg=1.2\" \\\r\n-F \"stock_kg=100.0\" \\\r\n-F \"status_name=Available\" \\\r\n-F \"available_date=03/December/24\"\r\n"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                product_name:
+                  type: string
+                  example: Updated Product Namessa
+                description:
+                  type: string
+                  example: This is an updated description of the product.
+                price_per_kg:
+                  type: number
+                  example: '120.5'
+                weight_per_kg:
+                  type: number
+                  example: '1.2'
+                stock_kg:
+                  type: number
+                  example: '100.0'
+                status_name:
+                  type: string
+                  example: tersedia
+                available_date:
+                  type: string
+                  example: 03/December/24
+                '':
+                  type: string
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order:
+    post:
+      tags:
+        - order
+      summary: create order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_id: 1
+                products:
+                  - product_id: 15
+                    quantity: 3
+                  - product_id: 13
+                    quantity: 3
+                pengiriman_id: 3
+                payment_method: Bank Transfer
+                time_order: 0.46
+                distance_km: 0.27
+                shipping_cost: 34.1
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjUtMDEtMDlUMjI6Mzg6MDdaIiwiaWF0IjoiMjAyNS0wMS0wOVQwNDozODowN1oiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjUtMDEtMDlUMDQ6Mzg6MDdaIn2e-QHt6DuIlS49kFHPdmWkUmLA3umA95O_BgWgpRNujmBWGIbIP2jL8Ts2pIMaxTh6fzI3IWfC__K0235f5XgK
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all/order:
+    get:
+      tags:
+        - order
+      summary: get all order peternak
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/by:
+    get:
+      tags:
+        - order
+      summary: get by id
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4
+        - name: order_id
+          in: query
+          schema:
+            type: integer
+          example: '50'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/delete:
+    delete:
+      tags:
+        - order
+      summary: delete
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4
+        - name: order_id
+          in: query
+          schema:
+            type: integer
+          example: '60'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/update:
+    put:
+      tags:
+        - order
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: berhasil
+      parameters:
+        - name: order_id
+          in: query
+          schema:
+            type: integer
+          example: '64'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /toko:
+    get:
+      tags:
+        - radius
+      summary: get toko by radius
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0wN1QwMDozNjo0OVoiLCJpYXQiOiIyMDI1LTAxLTA2VDA2OjM2OjQ5WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNS0wMS0wNlQwNjozNjo0OVoifdbkgJEVGHmPcOca1-8B70fAbosQXwEbKSPUX9qkDMXV-GFBvQ-lTuyGlYGDBRkxjGrXcAPqDos8W2o8jkqNdQc
+        - name: lat
+          in: query
+          schema:
+            type: number
+          example: '-6.873401331252015'
+        - name: lon
+          in: query
+          schema:
+            type: number
+          example: '107.57627981679529'
+        - name: radius
+          in: query
+          schema:
+            type: integer
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /toko/road/test:
+    post:
+      tags:
+        - radius
+      summary: testing get data
+      description: "Generated from cURL: curl -X POST http://localhost:8080/get-roads \\\r\n-H \"Content-Type: application/json\" \\\r\n-H \"Authorization: Bearer <your_token_here>\" \\\r\n-d '{\r\n  \"longitude\": 107.57346105795105,\r\n  \"latitude\": -6.870995660325296,\r\n  \"maxDistance\": 1000\r\n}'\r\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                long: 107.57431936484625
+                lat: -6.87108087457109
+                max_distance: 1000
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <your_token_here>
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /toko/radius:
+    post:
+      tags:
+        - radius
+      summary: get road
+      description: "Generated from cURL: curl -X POST \\\r\n  http://localhost:8080/api/road-to-point \\\r\n  -H \"Authorization: Bearer <YOUR_ACCESS_TOKEN>\" \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"origin\": [107.5898, -6.8716],\r\n    \"destination\": [107.5940, -6.8896]\r\n  }'\r\n"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                origin:
+                  - 107.57346105795105
+                  - -6.870995660325296
+                destination:
+                  - 107.58135748138689
+                  - -6.885396650918969
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer <YOUR_ACCESS_TOKEN>
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /toko/road:
+    post:
+      tags:
+        - radius
+      summary: get road
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                point:
+                  - 107.57346105795105
+                  - -6.870995660325296
+                maxDistance: 1000
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /all/akun:
+    get:
+      tags:
+        - user
+      summary: get all
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /update/akun:
+    put:
+      tags:
+        - user
+      summary: update data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama: Ahmad Rifki Ayala1
+                no_telp: '082184952582'
+                email: ayalarifki@example.com
+                id_role: 10
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /get/akun/:
+    get:
+      tags:
+        - user
+      summary: get by id
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /add/akun:
+    post:
+      tags:
+        - user
+      summary: add user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama: John Doe
+                no_telp: '08123456789'
+                email: johndoe@example.com
+                id_role: 9
+                password: securepassword123
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjQtMTItMjdUMDg6NTU6MTBaIiwiaWF0IjoiMjAyNC0xMi0yNlQxNDo1NToxMFoiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjQtMTItMjZUMTQ6NTU6MTBaIn30jRVe2gOA4zIaKt9ZKskAFFxpJyFUTBwf0SRjWw6Ex7rKEHLIex0z1YZ2xUoWUWfD8LesOwwHx8DJUfE3M1kG
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /delete/akun:
+    delete:
+      tags:
+        - user
+      summary: delete akun
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjQtMTItMjdUMDg6NTU6MTBaIiwiaWF0IjoiMjAyNC0xMi0yNlQxNDo1NToxMFoiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjQtMTItMjZUMTQ6NTU6MTBaIn30jRVe2gOA4zIaKt9ZKskAFFxpJyFUTBwf0SRjWw6Ex7rKEHLIex0z1YZ2xUoWUWfD8LesOwwHx8DJUfE3M1kG
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '63'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

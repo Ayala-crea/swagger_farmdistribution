@@ -1,0 +1,1496 @@
+{
+	"info": {
+		"_postman_id": "dca4fd8b-7db9-425d-80f7-e2393ff20181",
+		"name": "farm monitoring app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40674378",
+		"_collection_link": "https://farmdistribution.postman.co/workspace/farmdistribution-Workspace~d36446c9-185c-4182-8d7b-4b7218f36020/collection/40674378-dca4fd8b-7db9-425d-80f7-e2393ff20181?action=share&source=collection_link&creator=40674378"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nama\": \"percobaan\",\r\n  \"no_telp\": \"08738291345\",\r\n  \"email\": \"percobaan@gmail.com\",\r\n  \"alamat\": \"123 Main Street\",\r\n  \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/regis"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"peternaktesting@gmail.com\",\r\n  \"password\": \"testingreset\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/login"
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"peternaktesting@gmail.com\",\r\n    \"no_telp\": \"082184952676\",\r\n    \"new_password\": \"testingreset\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/reset-password"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "menu role",
+					"item": [
+						{
+							"name": "create menu role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nama_menu\": \"Product\",\r\n  \"routes_page\": \"/product\",\r\n  \"icon\": \"product-icon\",\r\n  \"sequence\": 1,\r\n  \"status\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/create/role-menu"
+							},
+							"response": []
+						},
+						{
+							"name": "get all menu role",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/role-menu"
+							},
+							"response": []
+						},
+						{
+							"name": "get menu role by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/role-menu?id=2",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"role-menu"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update menu role",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"menu_id\": 101,\r\n  \"parent_id\": null,\r\n  \"nama_menu\": \"Updated Menu\",\r\n  \"routes_page\": \"/updated-route\",\r\n  \"icon\": \"updated-icon\",\r\n  \"sequence\": 1,\r\n  \"status\": true,\r\n  \"parent_sequence\": null\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/update/role-menu/?id=2",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"update",
+										"role-menu",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete menu role",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/delete/role-menu?id=2",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"delete",
+										"role-menu"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Role Access",
+					"item": [
+						{
+							"name": "cretae role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name_role\": \"Admin\",\r\n    \"deskripsi\": \"All Access\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/create/role"
+							},
+							"response": []
+						},
+						{
+							"name": "get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/role"
+							},
+							"response": []
+						},
+						{
+							"name": "get role by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/role-id?id=8",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"role-id"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name_role\": \"Admin\",\r\n    \"deskripsi\": \"All access fitur edit\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/update/role?id=8",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"update",
+										"role"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "8"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete role",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/delete/role?id=8",
+									"protocol": "https",
+									"host": [
+										"farmsdistribution-2664aad5e284",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"delete",
+										"role"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "8"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "role access",
+					"item": [
+						{
+							"name": "create role access",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/create/role/menu"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "create address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlRldGluZyBkYXRhIiwiZXhwIjoiMjAyNC0xMS0xOFQyMDoxMDoyNCswNzowMCIsImlhdCI6IjIwMjQtMTEtMThUMDI6MTA6MjQrMDc6MDAiLCJpZCI6IjA4MTIzNDg3MjM2NCIsIm5iZiI6IjIwMjQtMTEtMThUMDI6MTA6MjQrMDc6MDAifZBxbp_GOVFy2HHrqwwd5I0tKMCbC98t6oaW1ivCmS1-xGL6J7Vgld_EGT8E4egeOhwDlyfwJgHTTpXASHERQQ8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"street\": \"Jl. Merdeka No. 45\",\r\n  \"city\": \"Bandung\",\r\n  \"state\": \"Jawa Barat\",\r\n  \"postal_code\": \"40115\",\r\n  \"country\": \"Indonesia\",\r\n  \"lat\": -6.914744,\r\n  \"lon\": 107.609810\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/add/address"
+					},
+					"response": []
+				},
+				{
+					"name": "get address by token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/address"
+					},
+					"response": []
+				},
+				{
+					"name": "update address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"Jl. Merdeka No. 45\",\r\n    \"city\": \"solo\",\r\n    \"state\": \"Jawa Tengah\",\r\n    \"postal_code\": \"40115\",\r\n    \"country\": \"Indonesia\",\r\n    \"lat\": -6.914744,\r\n    \"lon\": 107.60981\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/address/update"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "get profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/by-id?id=12",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"profile",
+								"by-id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"Peternak Testings\",\r\n    \"no_telp\": \"082184952676\",\r\n    \"email\": \"peternaktesting@gmail.com\",\r\n    \"id_role\": 11,\r\n    \"street\": \"Jl. Perkebunan Sukawana\",\r\n    \"city\": \"Bandung Barat\",\r\n    \"state\": \"Jawa Barat\",\r\n    \"postal_code\": \"40559\",\r\n    \"country\": \"Indonesia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/update"
+					},
+					"response": []
+				},
+				{
+					"name": "get all profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/all"
+					},
+					"response": []
+				},
+				{
+					"name": "delete profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/delete?id=9",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"profile",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add image profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA4VDAwOjM5OjE1WiIsImlhdCI6IjIwMjQtMTItMDdUMDY6Mzk6MTVaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI0LTEyLTA3VDA2OjM5OjE1WiJ9wSVEEAXEpEzvuhA0tJnjyjL7GZnf14YnzB-WxP6yYfl6ToV9z1ra5M-qtoaOnXpA8QHeBoCLQkxqepiFdkP3Bw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef9d603-0353-47b0-a16c-14a1101cfade"
+								}
+							]
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/add-image"
+					},
+					"response": []
+				},
+				{
+					"name": "delete image profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMS0yNFQyMDo0MTo1N1oiLCJpYXQiOiIyMDI0LTExLTI0VDAyOjQxOjU3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMS0yNFQwMjo0MTo1N1oifeNfQcy5DPbvTE8yp_-PidG0L2sCHHjzGE1tWTpmYkVQLcxITjgo4yV0I7d0tZ7l28xXESVaICxXx85AXHKXIgQ",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/profile/delete-image"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "peternakan",
+			"item": [
+				{
+					"name": "daftar peternakan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmciLCJleHAiOiIyMDI0LTEyLTA0VDA5OjI5OjMzKzA3OjAwIiwiaWF0IjoiMjAyNC0xMi0wM1QxNToyOTozMyswNzowMCIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wM1QxNToyOTozMyswNzowMCJ9cz4rxkgjxi_csJ11fW7zNRfXand3WMveEQkAQ8FbQx6_GtVqPsix1-EJi43_36mR8Cj4mrdGt-ozbuuGvRkMBA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Peternakan Sukawangi",
+									"type": "text"
+								},
+								{
+									"key": "street",
+									"value": "Jl. Perkebunan Sukawana",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Bandung Barat",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "Jawa Barat",
+									"type": "text"
+								},
+								{
+									"key": "postal_code",
+									"value": "40559",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "Indonesia",
+									"type": "text"
+								},
+								{
+									"key": "image_farm",
+									"type": "file",
+									"src": "l1IOnXN-9/ayam1.JPG"
+								},
+								{
+									"key": "lat",
+									"value": "-6.783763727800748",
+									"type": "text"
+								},
+								{
+									"key": "lon",
+									"value": "107.58645791756318",
+									"type": "text"
+								},
+								{
+									"key": "farm_type",
+									"value": "ayam",
+									"type": "text"
+								},
+								{
+									"key": "phonenumber_farm",
+									"value": "082184952582",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "PeternakanSejahtera@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "ini peternakan yang memiliki produk yang sangat baik dalam segi kualitas daging dan ayam",
+									"type": "text"
+								}
+							]
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/peternakan"
+					},
+					"response": []
+				},
+				{
+					"name": "update profile peternakan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQyMDoxNDo0NFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAyOjE0OjQ0WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMjoxNDo0NFoifXt42qZ4yCBu7pL08bpDNt86rXLGh3nb8T6lNlFg33WAPsLzYafe01Q4_3XYMqOKky9MO44Wy9SxZsu_WyppUwA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Green Valley Farm\",\r\n  \"farm_type\": \"Organic\",\r\n  \"phonenumber_farm\": \"081234567890\",\r\n  \"email\": \"contact@greenvalley.com\",\r\n  \"description\": \"A beautiful organic farm located in the hills.\",\r\n  \"street\": \"123 Green Valley Road\",\r\n  \"city\": \"Hilltown\",\r\n  \"state\": \"West Province\",\r\n  \"postal_code\": \"12345\",\r\n  \"country\": \"Indonesia\",\r\n  \"lat\": -7.789,\r\n  \"lon\": 110.123\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/peternakan/update",
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:8080/peternakan/update' \\\r\n--header 'login: v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQyMDoxNDo0NFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAyOjE0OjQ0WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMjoxNDo0NFoifXt42qZ4yCBu7pL08bpDNt86rXLGh3nb8T6lNlFg33WAPsLzYafe01Q4_3XYMqOKky9MO44Wy9SxZsu_WyppUwA' \\\r\n--form 'name=\"Green Valley Farm\"' \\\r\n--form 'farm_type=\"Organic\"' \\\r\n--form 'phonenumber_farm=\"081234567890\"' \\\r\n--form 'email=\"contact@greenvalley.com\"' \\\r\n--form 'description=\"A beautiful organic farm located in the hills.\"' \\\r\n--form 'street=\"123 Green Valley Road\"' \\\r\n--form 'city=\"Hilltown\"' \\\r\n--form 'state=\"West Province\"' \\\r\n--form 'postal_code=\"12345\"' \\\r\n--form 'country=\"Indonesia\"' \\\r\n--form 'lat=\"-7.789\"' \\\r\n--form 'lon=\"110.123\"' \\\r\n--form 'image_farm=@/path/to/your/image.jpg'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get profile peternakan pribadi",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wMVQxOTo0OToyOFoiLCJpYXQiOiIyMDI0LTEyLTAxVDAxOjQ5OjI4WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wMVQwMTo0OToyOFoifdNEHLPEI-dKHYTQVQ9YSiqC4jdEsieuABNQoZrDiJjoz_K7oDZAWe6zJb5L1Cb6y_L7QqABS5Do0rOja_kbqws",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/peternakan/get"
+					},
+					"response": []
+				},
+				{
+					"name": "get all peternak",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/all/peternak"
+					},
+					"response": []
+				},
+				{
+					"name": "delete peternakan",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/product/delete?id=8",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "req peternakan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6InBlcmNvYmFhbiIsImV4cCI6IjIwMjUtMDEtMTRUMDM6MzE6NTUrMDc6MDAiLCJpYXQiOiIyMDI1LTAxLTEzVDA5OjMxOjU1KzA3OjAwIiwiaWQiOiIwODczODI5MTM0NSIsIm5iZiI6IjIwMjUtMDEtMTNUMDk6MzE6NTUrMDc6MDAifeldjA3fR-zKi7ukbU3COwZceSJVnosEw7eVImnfIEGhnB7QmllsoJlGjafAOHbGWTcwvyL4wYPYrFzwWM_PiAU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"keterangan\": \"testing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/req/peternak"
+					},
+					"response": []
+				},
+				{
+					"name": "get all request peternak",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjUtMDEtMTRUMDM6MzM6MjYrMDc6MDAiLCJpYXQiOiIyMDI1LTAxLTEzVDA5OjMzOjI2KzA3OjAwIiwiaWQiOiIwODIxODQ5NTI1ODIiLCJuYmYiOiIyMDI1LTAxLTEzVDA5OjMzOjI2KzA3OjAwIn3SW9I2SN3NdnRYJjbdUkRONC7Kv7Fed0JVfOOANpvbCPNWidYg7FoNAuJMDOTpYyLxXPLRGf2X34BBh8IEmg8I",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/get/req/peternak"
+					},
+					"response": []
+				},
+				{
+					"name": "delete req peternakan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xM1QwMjoyOToyNyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAifV6oyNRc-EYVBZ4f-CYGmpWanJxHNa1vqAsgmevTKJ52ueeHYCd_G2L6NZ8U9pfcn_ay-QZPodrel4J-D_qc1Ac",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/delete/req/peternak?_id=6782d05d97002d3fda151f7a",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"delete",
+								"req",
+								"peternak"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "6782d05d97002d3fda151f7a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update data role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xNFQwMzoxMzo0NyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAifR-fse4qBlNG7FpGBZGiiZZybw8JAitRQuSBI0RyeyYbN-XUkJsRL53JybnD9ScNdXshCvVFQ6xupmkwhGDJUAM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 112\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/update/req/peternak",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"update",
+								"req",
+								"peternak"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xM1QwMjoyOToyNyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTJUMDg6Mjk6MjcrMDc6MDAifV6oyNRc-EYVBZ4f-CYGmpWanJxHNa1vqAsgmevTKJ52ueeHYCd_G2L6NZ8U9pfcn_ay-QZPodrel4J-D_qc1Ac",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "djahbdjasd",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "askjdbadkja",
+									"type": "text"
+								},
+								{
+									"key": "price_per_kg",
+									"value": "25.5",
+									"type": "text"
+								},
+								{
+									"key": "weight_per_kg",
+									"value": "1.25",
+									"type": "text"
+								},
+								{
+									"key": "stock_kg",
+									"value": "100.0",
+									"type": "text"
+								},
+								{
+									"key": "status_name",
+									"value": "Tersedia",
+									"type": "text"
+								},
+								{
+									"key": "available_date",
+									"value": "03/December/24",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef9d624-9cb7-40c0-a5fe-05306956215c"
+								}
+							]
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/add/product",
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/api/products \\\r\n-H \"Authorization: Bearer <your_jwt_token>\" \\\r\n-H \"Content-Type: multipart/form-data\" \\\r\n-F \"product_name=Ayam Broiler\" \\\r\n-F \"description=Ayam potong segar siap jual\" \\\r\n-F \"price_per_kg=25.5\" \\\r\n-F \"weight_per_kg=1.25\" \\\r\n-F \"stock_kg=100.0\" \\\r\n-F \"status_name=Tersedia\" \\\r\n-F \"available_date=2024-12-03T10:00:00Z\" \\\r\n-F \"image=@/path/to/image.jpg\"\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get all product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNC0xMi0wNFQxOTo1MToxN1oiLCJpYXQiOiIyMDI0LTEyLTA0VDAxOjUxOjE3WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0wNFQwMTo1MToxN1oifZDhDrSVcp7NqLfUL0Ssl77cwBhyZVUadvhmaH2BqQZITw2gBbI8LLs5PUc7c0Bqbx4IUryLj7tlRN1kU9RTeAI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/product"
+					},
+					"response": []
+				},
+				{
+					"name": "get all product pribadi",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQxMjo0NDozMVoiLCJpYXQiOiIyMDI0LTEyLTA4VDE4OjQ0OjMxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOFQxODo0NDozMVoifcMypvoCqDKtCN7XOPeAai_X0PxVvszkUlTeuyhSpZkoDP4jppedvkapm1_T9Th4MBhGLc9A5H-Xk_xwx4iQbAU",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/product/mine"
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/product/get/?id=7",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"get",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit produk new",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0wOVQyMDoxNzowMVoiLCJpYXQiOiIyMDI0LTEyLTA5VDAyOjE3OjAxWiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwMjoxNzowMVoifebsEpgqyZ7KzTU_mwE91HkekeCGxzYhTNCjMReLbI3XnK92lAKRz7UZlh_ozGFym3-eDbNpZGbQcuahUvBMpgs"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "product_name",
+									"value": "Updated Product Namessa",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is an updated description of the product.",
+									"type": "text"
+								},
+								{
+									"key": "price_per_kg",
+									"value": "120.5",
+									"type": "text"
+								},
+								{
+									"key": "weight_per_kg",
+									"value": "1.2",
+									"type": "text"
+								},
+								{
+									"key": "stock_kg",
+									"value": "100.0",
+									"type": "text"
+								},
+								{
+									"key": "status_name",
+									"value": "tersedia",
+									"type": "text"
+								},
+								{
+									"key": "available_date",
+									"value": "03/December/24",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/product/edit?id=2",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"edit"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PUT http://localhost:8080/edit-product?id=123 \\\r\n-H \"Authorization: Bearer <YOUR_JWT_TOKEN>\" \\\r\n-H \"Content-Type: multipart/form-data\" \\\r\n-F \"image=@/path/to/your/image.jpg\" \\\r\n-F \"product_name=Updated Product Name\" \\\r\n-F \"description=This is an updated description of the product.\" \\\r\n-F \"price_per_kg=120.5\" \\\r\n-F \"weight_per_kg=1.2\" \\\r\n-F \"stock_kg=100.0\" \\\r\n-F \"status_name=Available\" \\\r\n-F \"available_date=03/December/24\"\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0xMFQwMToyOTowN1oiLCJpYXQiOiIyMDI0LTEyLTA5VDA3OjI5OjA3WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwNzoyOTowN1oifW9AOHcWlQLdj7yiPHSxSpVEmBusZFBvmGqrgmDcYl773kMRu4iIcL78ijEz-M5N-WPtraoTpEMEgKGsok66swM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/product/delete?id=7",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"product",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjUtMDEtMDlUMjI6Mzg6MDdaIiwiaWF0IjoiMjAyNS0wMS0wOVQwNDozODowN1oiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjUtMDEtMDlUMDQ6Mzg6MDdaIn2e-QHt6DuIlS49kFHPdmWkUmLA3umA95O_BgWgpRNujmBWGIbIP2jL8Ts2pIMaxTh6fzI3IWfC__K0235f5XgK",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"products\": [\r\n        {\r\n            \"product_id\": 15,\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"product_id\": 13,\r\n            \"quantity\": 3\r\n        }\r\n    ],\r\n    \"pengiriman_id\": 3,\r\n    \"payment_method\": \"Bank Transfer\",\r\n    \"time_order\": 0.46,\r\n    \"distance_km\": 0.27,\r\n    \"shipping_cost\": 34.1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/order"
+					},
+					"response": []
+				},
+				{
+					"name": "get all order peternak",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/all/order"
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/order/by?order_id=50",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"by"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/order/delete?order_id=60",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"berhasil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/order/update?order_id=64",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"order",
+								"update"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": "64"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "radius",
+			"item": [
+				{
+					"name": "get toko by radius",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0wN1QwMDozNjo0OVoiLCJpYXQiOiIyMDI1LTAxLTA2VDA2OjM2OjQ5WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNS0wMS0wNlQwNjozNjo0OVoifdbkgJEVGHmPcOca1-8B70fAbosQXwEbKSPUX9qkDMXV-GFBvQ-lTuyGlYGDBRkxjGrXcAPqDos8W2o8jkqNdQc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/toko?lat=-6.873401331252015&lon=107.57627981679529&radius=5",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"toko"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-6.873401331252015"
+								},
+								{
+									"key": "lon",
+									"value": "107.57627981679529"
+								},
+								{
+									"key": "radius",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testing get data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer <your_token_here>",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"long\": 107.57431936484625,\r\n  \"lat\": -6.87108087457109,\r\n  \"max_distance\": 1000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/toko/road/test",
+						"description": "Generated from cURL: curl -X POST http://localhost:8080/get-roads \\\r\n-H \"Content-Type: application/json\" \\\r\n-H \"Authorization: Bearer <your_token_here>\" \\\r\n-d '{\r\n  \"longitude\": 107.57346105795105,\r\n  \"latitude\": -6.870995660325296,\r\n  \"maxDistance\": 1000\r\n}'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get road",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <YOUR_ACCESS_TOKEN>",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"origin\": [107.57346105795105, -6.870995660325296],\r\n    \"destination\": [107.58135748138689, -6.885396650918969]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/toko/radius",
+						"description": "Generated from cURL: curl -X POST \\\r\n  http://localhost:8080/api/road-to-point \\\r\n  -H \"Authorization: Bearer <YOUR_ACCESS_TOKEN>\" \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"origin\": [107.5898, -6.8716],\r\n    \"destination\": [107.5940, -6.8896]\r\n  }'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get road",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"point\": [107.57346105795105, -6.870995660325296],\r\n    \"maxDistance\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/toko/road"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs",
+								"type": "text"
+							}
+						],
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/all/akun"
+					},
+					"response": []
+				},
+				{
+					"name": "update data",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nama\": \"Ahmad Rifki Ayala1\",\r\n  \"no_telp\": \"082184952582\",\r\n  \"email\": \"ayalarifki@example.com\",\r\n  \"id_role\": 10\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/update/akun?id=12",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"update",
+								"akun"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhYWFhIiwiZXhwIjoiMjAyNC0xMi0yN1QwMjoyMzo1NloiLCJpYXQiOiIyMDI0LTEyLTI2VDA4OjIzOjU2WiIsImlkIjoiMDgyMTg0OTUyNTgyIiwibmJmIjoiMjAyNC0xMi0yNlQwODoyMzo1NloifUzdKuWVTfxZlpoPsCzJC41syUTvzUx2VjhxaquiCCcRtL3mHniMsfKzgWeO0xG8rnIESGRU78KKa4CkNZYguQs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/get/akun/?id=12",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"get",
+								"akun",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjQtMTItMjdUMDg6NTU6MTBaIiwiaWF0IjoiMjAyNC0xMi0yNlQxNDo1NToxMFoiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjQtMTItMjZUMTQ6NTU6MTBaIn30jRVe2gOA4zIaKt9ZKskAFFxpJyFUTBwf0SRjWw6Ex7rKEHLIex0z1YZ2xUoWUWfD8LesOwwHx8DJUfE3M1kG",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"John Doe\",\r\n    \"no_telp\": \"08123456789\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"id_role\": 9,\r\n    \"password\": \"securepassword123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://farmsdistribution-2664aad5e284.herokuapp.com/add/akun"
+					},
+					"response": []
+				},
+				{
+					"name": "delete akun",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "login",
+								"value": "v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjQtMTItMjdUMDg6NTU6MTBaIiwiaWF0IjoiMjAyNC0xMi0yNlQxNDo1NToxMFoiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjQtMTItMjZUMTQ6NTU6MTBaIn30jRVe2gOA4zIaKt9ZKskAFFxpJyFUTBwf0SRjWw6Ex7rKEHLIex0z1YZ2xUoWUWfD8LesOwwHx8DJUfE3M1kG",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://farmsdistribution-2664aad5e284.herokuapp.com/delete/akun?id=63",
+							"protocol": "https",
+							"host": [
+								"farmsdistribution-2664aad5e284",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"delete",
+								"akun"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "63"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
