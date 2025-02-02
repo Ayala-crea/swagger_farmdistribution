@@ -4,6 +4,7 @@ info:
   version: 1.0.0
 servers:
   - url: https://farmsdistribution-2664aad5e284.herokuapp.com
+  - url: https://farmdistribution-40a43a4491b1.herokuapp.com
 tags:
   - name: Auth
   - name: role
@@ -593,23 +594,23 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /product/delete:
+  /peternakan/delete:
     delete:
       tags:
-        - product
-      summary: delete product
+        - peternakan
+      summary: delete peternakan
       parameters:
         - name: login
           in: header
           schema:
             type: string
           example: >-
-            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0xMFQwMToyOTowN1oiLCJpYXQiOiIyMDI0LTEyLTA5VDA3OjI5OjA3WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwNzoyOTowN1oifW9AOHcWlQLdj7yiPHSxSpVEmBusZFBvmGqrgmDcYl773kMRu4iIcL78ijEz-M5N-WPtraoTpEMEgKGsok66swM
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3Rpbmdzc3MiLCJleHAiOiIyMDI1LTAxLTE3VDAyOjAxOjMzWiIsImlhdCI6IjIwMjUtMDEtMTZUMDg6MDE6MzNaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI1LTAxLTE2VDA4OjAxOjMzWiJ9KBrGSuxuY0U2rE_gtECcAYL2NtBpdzJYJ5nFnfrnocaY2I1YAX2aOH6kY0Cy142_SBjRrvuJ-tCUKL7j3_chDw
         - name: id
           in: query
           schema:
             type: integer
-          example: '7'
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -697,6 +698,23 @@ paths:
             type: string
           example: >-
             v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xNFQwMzoxMzo0NyswNzowMCIsImlhdCI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTNUMDk6MTM6NDcrMDc6MDAifR-fse4qBlNG7FpGBZGiiZZybw8JAitRQuSBI0RyeyYbN-XUkJsRL53JybnD9ScNdXshCvVFQ6xupmkwhGDJUAM
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /status/peternak:
+    get:
+      tags:
+        - peternakan
+      summary: get status role
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xNFQxMDowNjozN1oiLCJpYXQiOiIyMDI1LTAxLTEzVDE2OjA2OjM3WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNS0wMS0xM1QxNjowNjozN1oifXPdXiwDLqj0p8lfYqfB5QKbDax4IVDFJGFwaHQ_Zz4gTL8zcArOXa6_FR_xq1tBkUjXX-LPZxcPPKFAtFt4vwc
       responses:
         '200':
           description: Successful response
@@ -861,6 +879,44 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /product/delete:
+    delete:
+      tags:
+        - product
+      summary: delete product
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNC0xMi0xMFQwMToyOTowN1oiLCJpYXQiOiIyMDI0LTEyLTA5VDA3OjI5OjA3WiIsImlkIjoiMDgyMTg0OTUyNjc2IiwibmJmIjoiMjAyNC0xMi0wOVQwNzoyOTowN1oifW9AOHcWlQLdj7yiPHSxSpVEmBusZFBvmGqrgmDcYl773kMRu4iIcL78ijEz-M5N-WPtraoTpEMEgKGsok66swM
+        - name: id
+          in: query
+          schema:
+            type: integer
+          example: '7'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /product/farm:
+    get:
+      tags:
+        - product
+      summary: get all product by farm id
+      parameters:
+        - name: id_farm
+          in: query
+          schema:
+            type: integer
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /order:
     post:
       tags:
@@ -872,24 +928,22 @@ paths:
             schema:
               type: object
               example:
-                user_id: 1
                 products:
-                  - product_id: 15
-                    quantity: 3
-                  - product_id: 13
-                    quantity: 3
+                  - product_id: 23
+                    quantity: 1
+                  - product_id: 24
+                    quantity: 1
                 pengiriman_id: 3
                 payment_method: Bank Transfer
-                time_order: 0.46
-                distance_km: 0.27
-                shipping_cost: 34.1
+                time_order: 17.3
+                distance_km: 14.32
       parameters:
         - name: login
           in: header
           schema:
             type: string
           example: >-
-            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhMSIsImV4cCI6IjIwMjUtMDEtMDlUMjI6Mzg6MDdaIiwiaWF0IjoiMjAyNS0wMS0wOVQwNDozODowN1oiLCJpZCI6IjA4MjE4NDk1MjU4MiIsIm5iZiI6IjIwMjUtMDEtMDlUMDQ6Mzg6MDdaIn2e-QHt6DuIlS49kFHPdmWkUmLA3umA95O_BgWgpRNujmBWGIbIP2jL8Ts2pIMaxTh6fzI3IWfC__K0235f5XgK
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNS0wMi0wMlQyMDoyNDozNVoiLCJpYXQiOiIyMDI1LTAyLTAyVDAyOjI0OjM1WiIsImlkIjoiMDg1MTgzMTMwNTE2IiwibmJmIjoiMjAyNS0wMi0wMlQwMjoyNDozNVoifamqFNnkklj10K0Sbkrl2206ffxIIT4aGsuv3UwQazO_uvtUwszdVv339ezc2p5v6KXy9NRjaLesN62IBisSAgQ
       responses:
         '200':
           description: Successful response
@@ -906,7 +960,7 @@ paths:
           schema:
             type: string
           example: >-
-            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4
+            v4.public.eyJhbGlhcyI6IlJhamliIiwiZXhwIjoiMjAyNS0wMS0xNVQwMzozMTozMFoiLCJpYXQiOiIyMDI1LTAxLTE0VDA5OjMxOjMwWiIsImlkIjoiMDg3MzgyOTEzMzEiLCJuYmYiOiIyMDI1LTAxLTE0VDA5OjMxOjMwWiJ9ruTVn8RoTF3AFHpPgDLP1GiUoywV6wTl1n0p3XQZyNc_6-7_ao-m1MILf2Fj86jMVY9Kns_o7BqMc_OaGVL9DQ
       responses:
         '200':
           description: Successful response
@@ -923,12 +977,12 @@ paths:
           schema:
             type: string
           example: >-
-            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3RpbmdzIiwiZXhwIjoiMjAyNS0wMS0xMVQwMzoxMTo0OSswNzowMCIsImlhdCI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAiLCJpZCI6IjA4MjE4NDk1MjY3NiIsIm5iZiI6IjIwMjUtMDEtMTBUMDk6MTE6NDkrMDc6MDAifWiZdYUR_Q8b1rTmo2b_TI1fcbOTn_radDAg_vTqOAo78l5FvVKkY1Uksgox_kLBHpbwXbChXZaHIIVfGlK2yQ4
-        - name: order_id
+            v4.public.eyJhbGlhcyI6IlBldGVybmFrIFRlc3Rpbmdzc3MiLCJleHAiOiIyMDI1LTAxLTE3VDAyOjAxOjMzWiIsImlhdCI6IjIwMjUtMDEtMTZUMDg6MDE6MzNaIiwiaWQiOiIwODIxODQ5NTI2NzYiLCJuYmYiOiIyMDI1LTAxLTE2VDA4OjAxOjMzWiJ9KBrGSuxuY0U2rE_gtECcAYL2NtBpdzJYJ5nFnfrnocaY2I1YAX2aOH6kY0Cy142_SBjRrvuJ-tCUKL7j3_chDw
+        - name: id_invoice
           in: query
           schema:
             type: integer
-          example: '50'
+          example: '65'
       responses:
         '200':
           description: Successful response
@@ -967,13 +1021,63 @@ paths:
             schema:
               type: object
               example:
-                status: berhasil
+                invoice_id: 60
+                status: Completed
       parameters:
-        - name: order_id
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IlJhamliIiwiZXhwIjoiMjAyNS0wMS0xNVQwMzozMTozMFoiLCJpYXQiOiIyMDI1LTAxLTE0VDA5OjMxOjMwWiIsImlkIjoiMDg3MzgyOTEzMzEiLCJuYmYiOiIyMDI1LTAxLTE0VDA5OjMxOjMwWiJ9ruTVn8RoTF3AFHpPgDLP1GiUoywV6wTl1n0p3XQZyNc_6-7_ao-m1MILf2Fj86jMVY9Kns_o7BqMc_OaGVL9DQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/user:
+    get:
+      tags:
+        - order
+      summary: get all order bu user
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6InVrYXN5YWgiLCJleHAiOiIyMDI1LTAxLTE3VDAxOjEwOjQ0WiIsImlhdCI6IjIwMjUtMDEtMTZUMDc6MTA6NDRaIiwiaWQiOiIwODEwMjkzODQ3NTEiLCJuYmYiOiIyMDI1LTAxLTE2VDA3OjEwOjQ0WiJ9E-sQVhfewnrKkTwD56ryCydaKHMU2QUUTV1hlWj-OCxwZTcjigQx1pF8uKXCho87NrMe2BZ2q37O1Fh5364oCw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /order/bukti-transfer:
+    put:
+      tags:
+        - order
+      summary: upload bukti transfer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                bukti_transfer:
+                  type: string
+                  format: binary
+      parameters:
+        - name: login
+          in: header
+          schema:
+            type: string
+          example: >-
+            v4.public.eyJhbGlhcyI6IkFobWFkIFJpZmtpIEF5YWxhIiwiZXhwIjoiMjAyNS0wMi0wMlQyMjoyODowOFoiLCJpYXQiOiIyMDI1LTAyLTAyVDA0OjI4OjA4WiIsImlkIjoiMDg1MTgzMTMwNTE2IiwibmJmIjoiMjAyNS0wMi0wMlQwNDoyODowOFoiffJ7umkzZm7mYw-hBt0ii2UCKwnP6KruZhmol-VnhD-2H4VOZbuDAYxVAfVifTdIdtl1_sjxbTNQg1Bx5NhjcQE
+        - name: id_invoice
           in: query
           schema:
             type: integer
-          example: '64'
+          example: '81'
       responses:
         '200':
           description: Successful response
