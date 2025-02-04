@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: farm monitoring app
+  title: Farm Radius
   version: 1.0.0
 servers:
   - url: https://farmsdistribution-2664aad5e284.herokuapp.com
