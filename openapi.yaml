@@ -3,7 +3,7 @@ info:
   title: Farm Radius
   version: 1.0.0
 servers:
-  - url: https://farmsdistribution-2664aad5e284.herokuapp.com
+  - url: https://farm-distribution-d0d1df93c0f1.herokuapp.com
   - url: http://localhost:8080
 tags:
   - name: Auth
